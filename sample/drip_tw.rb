@@ -243,13 +243,10 @@ if __FILE__ == $0
   unless app.has_token?
     url = app.pin_url
     puts url
-    system('open ' + url) # for OSX
+    system('start ' + url)
     app.set_pin(gets.scan(/\w+/)[0])
     app.write_setting
   end
 
-  unless $DEBUG
-    Process.daemon
-  end
   app.drip_stream
 end
